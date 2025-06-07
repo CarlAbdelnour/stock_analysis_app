@@ -727,3 +727,58 @@ with st.expander("📦 System Information"):
         st.write(f"{status} {package}")
 
 st.markdown(f"""
+This stock market data science application demonstrates:
+
+- **Data Collection**: {'Real-time stock data via yfinance API' if YFINANCE_AVAILABLE else 'Sample data generation (yfinance unavailable)'}
+- **Data Processing**: Technical indicators calculation and data cleaning
+- **Exploratory Data Analysis**: Comprehensive statistical analysis and visualization
+- **Machine Learning**: Linear regression model for price prediction
+- **Interactive Visualization**: Dynamic charts using Plotly
+- **User Interface**: Professional Streamlit dashboard
+
+**Technologies Used**: Python, Pandas, NumPy, Scikit-learn, Plotly, Streamlit{', yfinance' if YFINANCE_AVAILABLE else ''}
+
+**Features Included**:
+- 📊 Real-time/sample stock price data
+- 📈 Technical indicators (MA, RSI, Bollinger Bands)
+- 📉 Statistical analysis and distribution plots
+- 🤖 Machine learning price prediction
+- 📋 Data export functionality
+- 🎨 Interactive, responsive visualizations
+
+**Note**: This is for educational and demonstration purposes only. Not for actual trading decisions.
+""")
+
+# Show current limitations if any
+if not YFINANCE_AVAILABLE:
+    st.warning("""
+    ⚠️ **yfinance Package Not Available**
+    
+    The app is currently running with sample data. To enable real-time data:
+    1. Ensure `yfinance` is in your requirements.txt
+    2. Check that all dependencies install correctly
+    3. Verify network connectivity for API access
+    
+    The sample data provides the same functionality for demonstration purposes.
+    """)
+
+# Performance tips
+with st.expander("💡 Usage Tips"):
+    st.markdown("""
+    **For Best Performance:**
+    - Choose date ranges of 1-2 years for optimal loading
+    - Popular symbols (AAPL, MSFT, GOOGL) typically have better data availability
+    - The prediction model works best with 100+ data points
+    - Use the download feature to save data for further analysis
+    
+    **Understanding the Analysis:**
+    - **Moving Averages**: Trend indicators (20-day and 50-day)
+    - **RSI**: Momentum indicator (>70 overbought, <30 oversold)
+    - **Bollinger Bands**: Volatility indicator showing price channels
+    - **R² Score**: Model accuracy (>0.7 is considered good)
+    
+    **Troubleshooting:**
+    - If no data loads, try a different stock symbol
+    - For old symbols, extend the date range
+    - Some international symbols may not be available
+    """)
